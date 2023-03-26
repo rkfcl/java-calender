@@ -1,12 +1,19 @@
 package Java_Calender;
 
 import java.io.IOException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 public class Calender {
 	private final static int[] Leap_Year_MaxDays = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private final static int[] MaxDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private final static String[] Days = { "SU", "MO", "TU", "WE", "TH", "FR", "SA" };
-
+	public int GetDayOfWeek(int year,int Month)
+	{
+		LocalDate date = LocalDate.of(year, Month, 1);
+		DayOfWeek dayofweek = date.getDayOfWeek();
+		return dayofweek.getValue();
+	}
 	public int GetMaxDays(int year, int Month) {
 		if (leapYear(year, Month)) {
 			return (Leap_Year_MaxDays[Month - 1]);
@@ -28,9 +35,13 @@ public class Calender {
 		}
 		System.out.println();
 		System.out.println("----------------------------");
+		for(int i=0;i<GetDayOfWeek(year, month);i++)
+		{
+			System.out.printf("    ");
+		}
 		for (int i = 1; i <= GetMaxDays(year, month); i++) {
 			System.out.printf("%4d", i);
-			if (i % 7 == 0) {
+			if ((i+GetDayOfWeek(year, month)) % 7 == 0) {
 				System.out.println();
 			}
 		}

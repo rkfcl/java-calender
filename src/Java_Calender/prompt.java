@@ -16,11 +16,11 @@ public class prompt {
 			System.out.println("년도와 달을 입력하세요");
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			int Y = Integer.parseInt(st.nextToken());
-			int M = Integer.parseInt(st.nextToken());
-			
-			if (M == -1) {
+			if (Y == -1) {
 				break;
 			}
+			int M = Integer.parseInt(st.nextToken());
+			
 			if (M > 12) {
 				continue;
 			}
